@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from pitcharea import app, db, bcrypt
-from pitcharea.forms import RegistrationForm, LoginForm
-from pitcharea.models import User, Pitch
+from blogsite import app, db, bcrypt
+from blogsite.forms import RegistrationForm, LoginForm
+from blogsite.models import User, Blog
 from flask_login import login_user
 
 
