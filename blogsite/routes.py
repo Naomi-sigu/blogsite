@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect
 from blogsite import app, db, bcrypt
 from blogsite.forms import RegistrationForm, LoginForm
 from blogsite.models import User, Blog
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 
 
@@ -35,3 +35,19 @@ def login():
             flash('Login Unsuccessful. Please check your email or password to try again.', 'danger')
     return render_template('login.html', title = 'Login', form=form)    
 
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+@app.route("/blog/new",  methods=['GET', 'POST'])
+@login_required
+def new_blog():
+    form = PostForm()  
+    if form.validate_on_submit():
+        flash('Your Post Has Been Created!', 'success')
+        return redirect(url_for('home'))  
+    return render_template('new_blog.html', title='New Post', f
+    orm=form)
