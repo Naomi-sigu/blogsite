@@ -5,25 +5,10 @@ from blogsite.models import User, Blog
 from flask_login import login_user
 
 
-posts = [
-    {
-        'Author': 'nammy',
-        'Title': 'Pitch Post',
-        'Content': 'First pitch made',
-        'Date_posted': 'April 20, 2018'
-    },
-    {
-        'Author': 'Jane Doe',
-        'Title':  'save Post',
-        'Content': 'Second Blog Post',
-        'Date_posted': 'April 20, 2018'
-    }
-
-]
 
 @app.route("/")
 def home():
-    return render_template('home.html', posts = posts)
+    return render_template('home.html',)
      
 
 @app.route("/register", methods=['GET', 'POST'])
