@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from blogsite import app, db, bcrypt
-from blogsite.forms import RegistrationForm, LoginForm
+from blogsite.forms import RegistrationForm, LoginForm, PostForm
 from blogsite.models import User, Blog
 from flask_login import login_user, logout_user
 
@@ -47,7 +47,7 @@ def logout():
 def new_blog():
     form = PostForm()  
     if form.validate_on_submit():
-        flash('Your Post Has Been Created!', 'success')
+        flash('Your Blog Post Has Been Created!', 'success')
         return redirect(url_for('home'))  
     return render_template('new_blog.html', title='New Post', f
     orm=form)
