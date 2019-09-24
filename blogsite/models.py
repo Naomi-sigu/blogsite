@@ -25,8 +25,9 @@ class User(db.Model, UserMixin):
     blog = db.relationship('Blog', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
 
+
     def __repr__(self):
-         return f"user('{self.username}', '{self.email}', '{self.image_file}')"  
+        return f'User{self.username}'
 
     
 
