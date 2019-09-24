@@ -4,7 +4,10 @@ from blogsite.forms import RegistrationForm, LoginForm, PostForm
 from blogsite.models import User, Blog
 from flask_login import login_user, logout_user, login_required, current_user
 
-
+@app.route("/")
+def home():
+    blogs = Blog.query.all()
+    return render_template('home.html', blogs=blogs)
 
 @app.route("/home")
 def home():
