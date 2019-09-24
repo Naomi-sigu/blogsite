@@ -1,7 +1,7 @@
 # BLOGSITE
 
 ## DESCRIPTION
-This is a for personal blogging website where you can create and share your opinions and other users can read and comment on them.
+This is a for personal blogging website where you can create and share your creations to different people and other users can read and comment on them.
 
 ## AUTHOR
 Naomi Sigu
