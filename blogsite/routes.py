@@ -53,4 +53,4 @@ def new_blog():
         db.session.commit()
         flash('Your Blog Post Has Been Created!', 'success')
         return redirect(url_for('home'))  
-    return render_template('new_blog.html', title='New Post', form=form, blog=blog)
+    return render_template('new_blog.html', title='New Post', form=form)
