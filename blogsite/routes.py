@@ -2,14 +2,14 @@ from flask import render_template, url_for, flash, redirect
 from blogsite import app, db, bcrypt
 from blogsite.forms import RegistrationForm, LoginForm, PostForm
 from blogsite.models import User, Blog
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 
-@app.route("/")
+@app.route("/home")
 def home():
-    post = post.query.all()
-    return render_template('home.html', posts=posts)
+    blogs = Blog.query.all()
+    return render_template('home.html', blogs=blogs)
      
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -46,11 +46,11 @@ def logout():
 @app.route("/blog/new", methods=['GET', 'POST'])
 @login_required
 def new_blog():
-    form = PostForm()  
+    form = PostForm()
     if form.validate_on_submit():
-        post=post(title=form.title.data, content=form.content.data, author=current_user)
-        db.session.add(post)
+        blog=Blog(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(blog)
         db.session.commit()
         flash('Your Blog Post Has Been Created!', 'success')
         return redirect(url_for('home'))  
-    return render_template('new_blog.html', title='New Post', form=form)
+    return render_template('new_blog.html', title='New Post', form=form, blog=blog)
